@@ -45,22 +45,17 @@ TopDownGame.Game.prototype = {
 
   },
   createItems: function() {
-    //create items
-    this.items = this.game.add.group();
-    this.items.enableBody = true;
-    result = this.findObjectsByType('item', this.map, 'objectsLayer');
-    result.forEach(function(element){
-      this.createFromTiledObject(element, this.items);
-    }, this);
+    this.createObjectsFromLayer('items', 'item', 'objectsLayer');
   },
   createDoors: function() {
-    //create doors
-    this.doors = this.game.add.group();
-    this.doors.enableBody = true;
-    result = this.findObjectsByType('door', this.map, 'objectsLayer');
-
+    this.createObjectsFromLayer('doors', 'door', 'objectsLayer');
+  },
+  createObjectsFromLayer: function(name, type, layer) {
+    this[name] = target = this.game.add.group();
+    target.enableBody = true;
+    result = this.findObjectsByType(type, this.map, layer);
     result.forEach(function(element){
-      this.createFromTiledObject(element, this.doors);
+      this.createFromTiledObject(element, target);
     }, this);
   },
 
