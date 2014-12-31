@@ -4,8 +4,13 @@ var TopDownGame = TopDownGame || {};
 TopDownGame.Game = function(){};
 
 TopDownGame.Game.prototype = {
+  init: function(levelName, startX, startY) {
+    this.levelName = levelName || 'level1';
+    this.startX = startX;
+    this.startY = startY;
+  },
   create: function() {
-    this.map = this.game.add.tilemap('level1');
+    this.map = this.game.add.tilemap(this.levelName);
 
     //the first parameter is the tileset name as specified in Tiled, the second is the key to the asset
     this.map.addTilesetImage('tiles', 'gameTiles');
@@ -24,8 +29,12 @@ TopDownGame.Game.prototype = {
     this.createDoors();
 
     //create player
-    var result = this.findObjectsByType('playerStart', this.map, 'objectsLayer');
-    this.player = this.game.add.sprite(result[0].x, result[0].y, 'player');
+    if(this.startX === undefined) {
+      var result = this.findObjectsByType('playerStart', this.map, 'objectsLayer');
+      this.startX = Math.round(result[0].x);
+      this.startY = Math.round(result[0].y);// - this.map.tileHeight;
+    }
+    this.player = this.game.add.sprite(this.startX, this.startY, 'player');
     this.game.physics.arcade.enable(this.player);
 
     //the camera will follow the player in the world
@@ -109,5 +118,6 @@ TopDownGame.Game.prototype = {
   },
   enterDoor: function(player, door) {
     console.log('entering door that will take you to '+door.targetTilemap+' on x:'+door.targetX+' and y:'+door.targetY);
+    this.game.state.start('Game', true, false, door.targetTilemap, parseInt(door.targetX, 10), parseInt(door.targetY, 10) - this.map.tileHeight);
   },
 };
