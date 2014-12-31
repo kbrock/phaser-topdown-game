@@ -51,9 +51,9 @@ TopDownGame.Game.prototype = {
     this.createObjectsFromLayer('doors', 'door', 'objectsLayer');
   },
   createObjectsFromLayer: function(name, type, layer) {
-    this[name] = target = this.game.add.group();
+    var target = this[name] = this.game.add.group();
     target.enableBody = true;
-    result = this.findObjectsByType(type, this.map, layer);
+    var result = this.findObjectsByType(type, this.map, layer);
     result.forEach(function(element){
       this.createFromTiledObject(element, target);
     }, this);
