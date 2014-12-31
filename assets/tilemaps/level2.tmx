@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16">
+  <image source="../images/tiles.png" width="705" height="1280"/>
+  <tile id="686">
+   <properties>
+    <property name="sprite" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="backgroundLayer" width="10" height="10">
+  <properties>
+   <property name="sprite" value=""/>
+   <property name="type" value="item"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxLYGBgSBjFgwYDAJpDJYE=
+  </data>
+ </layer>
+ <layer name="blockedLayer" width="10" height="10">
+  <data encoding="base64" compression="zlib">
+   eJy7x8DAcI9ITAggq8NnBjobmznkqsPlLmxuQjcXn3mE9OIDxIYvCAMArtsu1Q==
+  </data>
+ </layer>
+ <objectgroup name="objectsLayer">
+  <object type="door" gid="445" x="0" y="144">
+   <properties>
+    <property name="sprite" value="browndoor"/>
+    <property name="targetTilemap" value="level1"/>
+    <property name="targetX" value="127"/>
+    <property name="targetY" value="160"/>
+    <property name="type" value="door"/>
+   </properties>
+  </object>
+  <object type="item" gid="687" x="73.5" y="80.5">
+   <properties>
+    <property name="sprite" value="bluecup"/>
+    <property name="type" value="item"/>
+   </properties>
+  </object>
+  <object type="item" gid="687" x="126" y="33.5">
+   <properties>
+    <property name="sprite" value="bluecup"/>
+    <property name="type" value="item"/>
+   </properties>
+  </object>
+  <object type="item" gid="687" x="127" y="142.5">
+   <properties>
+    <property name="sprite" value="bluecup"/>
+    <property name="type" value="item"/>
+   </properties>
+  </object>
+  <object type="item" gid="687" x="16" y="32">
+   <properties>
+    <property name="sprite" value="bluecup"/>
+    <property name="type" value="item"/>
+   </properties>
+  </object>
+  <object type="playerStart" gid="71" x="48" y="96">
+   <properties>
+    <property name="type" value="playerStart"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
